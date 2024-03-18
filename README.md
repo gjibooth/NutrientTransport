@@ -8,7 +8,7 @@ Each figure is produced by individual MATLAB files, written using MATLAB R2022a:
 * [Figure 5a](figure5a_typical_operation.m): Nutrient concentration in bioreactor under typical operating conditions
 * [Figure 5b](figure5b_compare_membrane.m): Comparing membrane concentration under varying transmural pressure drops
 * [Figure 6a](figure6a_compare_Pin_kappa.m): Comparing outer membrane wall nutrient concentration under varying inlet pressures and membrane permeabilities
-* [Figure 6b](figure6b_compare_Rm0_Peclet.m): Comparing outer membrane wall nutrient concentration under varying membrane wall thickness and lumen P\'eclet numbers
+* [Figure 6b](figure6b_compare_Rm0_Peclet.m): Comparing outer membrane wall nutrient concentration under varying membrane wall thickness and lumen Péclet numbers
 * [Figure 7](figure7_waste_sensitivity.m): Comparing outer membrane wall waste metabolite concentration under varying inlet pressures and membrane thicknesses
 
 ## Requirements
