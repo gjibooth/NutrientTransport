@@ -2,9 +2,7 @@ close all
 clear
 
 % Add paths
-addpath(genpath('Homogeneous Permeability/'))
-addpath(genpath('Optimal Permeability/'))
-addpath(genpath('/Users/george/Documents/MATLAB/'))
+addpath(genpath('./functions'))
 
 %% PARAMETERS
 [rl0, rm0, re0, cell_thickness, l, k, phi_m, phi_c, qlin, qein, plout, peout, eta, Wbar, dl, dm, dc, Rm0, Re0, Qlin, Plout, Qein, Peout, epsilon, beta, delta, Cin, Vmax, Km, Peclet_l, Dm] = parameters();
