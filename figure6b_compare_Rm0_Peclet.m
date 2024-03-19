@@ -44,7 +44,10 @@ end
 [P,R] = meshgrid(epsilon.^2.*Peclet_array, Rm0_array);
 
 figure(1)
-setfiguresize([21 5])
+set(groot,'defaultAxesTickLabelInterpreter','latex');
+set(groot, 'DefaultAxesFontSize', font_size);
+set(groot, 'DefaultAxesLineWidth', 2);
+
 subplot(1,2,1)
 hold on
 h = pcolor(R,P,Cm_avg);
@@ -52,10 +55,9 @@ h.EdgeColor = 'none';
 [c2,h2] = contour(R,P,Cm_avg, [0.1 0.3 0.5 0.7 0.9], 'LineColor', 'w', 'ShowText',true,'LineWidth',3);
 clabel(c2, h2,'FontSize',14,'FontWeight','bold','Color','w');
 
-fig_xaxis('$R_{m0}$',font_size)
-fig_yaxis('$\varepsilon^2\mathcal{P}_l$',font_size)
-
-basicfiguresetup(font_size,1.5, 'Homogeneous Permeability')
+xlabel('$R_{m0}$', 'FontSize', font_size, 'Interpreter', 'latex')
+ylabel('$\varepsilon^2\mathcal{P}_l$','FontSize', font_size, 'Interpreter', 'latex')
+title('Homogeneous Permeability', 'FontSize', font_size, 'Interpreter', 'latex')
 
 subplot(1,2,2)
 hold on
@@ -64,8 +66,8 @@ h.EdgeColor = 'none';
 [c2,h2] = contour(R,P,Cm_optimum, [0.1 0.3 0.5 0.7 0.9], 'LineColor', 'w', 'ShowText',true,'LineWidth',3);
 clabel(c2, h2,'FontSize',14,'FontWeight','bold','Color','w')
 
-fig_xaxis('$R_{m0}$',font_size)
-fig_yaxis('$\varepsilon^2\mathcal{P}_l$',font_size)
+xlabel('$R_{m0}$','FontSize', font_size, 'Interpreter', 'latex')
+ylabel('$\varepsilon^2\mathcal{P}_l$', 'FontSize', font_size, 'Interpreter', 'latex')
 
 c = colorbar;
 c.Label.Interpreter = 'latex';
@@ -74,6 +76,6 @@ c.Label.FontSize = font_size;
 c.LineWidth = 1.5;
 caxis([0 1]);
 set(c,'TickLabelInterpreter','latex')
-basicfiguresetup(font_size,1.5, 'Heterogeneous Permeability')
+title('Heterogeneous Permeability','FontSize', font_size, 'Interpreter', 'latex')
 
 colormap(ametrine)

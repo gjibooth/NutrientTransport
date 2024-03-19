@@ -36,82 +36,29 @@ end
 
 %% FIGURES
 figure(1)
-setfiguresize([20 7])
-
-subplot(2,3,1)
-hold on
-plt1 = pcolor(Zm,Rm,Cm{1});
-set(plt1,'EdgeColor','none')
-fig_xaxis('$z$',font_size)
-fig_yaxis('$r$', font_size)
-xlim([0 1])
-c = colorbar;
-c.Label.Interpreter = 'latex';
-c.Label.String = '$c$';
-c.Label.FontSize = font_size;
-c.LineWidth = 1.5;
-caxis([min(Cm{1},[],'all'), max(Cm{1},[],'all')]);
-set(c,'TickLabelInterpreter','latex')
-colormap(ametrine)
-basicfiguresetup(font_size,1.5,'$P_{e,out} = 0$')
-
-box on
-testa = gca;
-testa.Box = 'on';
-testa.LineWidth = 2.5;
-
-subplot(2,3,2)
-hold on
-plt1 = pcolor(Zm,Rm,Cm{2});
-set(plt1,'EdgeColor','none')
-fig_xaxis('$z$',font_size)
-xlim([0 1])
-c = colorbar;
-c.Label.Interpreter = 'latex';
-c.Label.String = '$c$';
-c.Label.FontSize = font_size;
-c.LineWidth = 1.5;
-caxis([min(Cm{2},[],'all'), max(Cm{2},[],'all')]);
-set(c,'TickLabelInterpreter','latex')
-colormap(ametrine)
-basicfiguresetup(font_size,1.5,'$P_{e,out} = 0.3P_{l,out}$')
-
-box on
-testa = gca;
-testa.Box = 'on';
-testa.LineWidth = 2.5;
-
-subplot(2,3,3)
-
-hold on
-plt1 = pcolor(Zm,Rm,Cm{3});
-set(plt1,'EdgeColor','none')
-fig_xaxis('$z$',font_size)
-xlim([0 1])
-c = colorbar;
-c.Label.Interpreter = 'latex';
-c.Label.String = '$c$';
-c.Label.FontSize = font_size;
-c.LineWidth = 1.5;
-caxis([min(Cm{3},[],'all')-0.001, max(Cm{3},[],'all')]);
-set(c,'TickLabelInterpreter','latex')
-colormap(ametrine)
-basicfiguresetup(font_size,1.5,'$$P_{e,out} = 0.6P_{l,out}$')
-
-box on
-testa = gca;
-testa.Box = 'on';
-testa.LineWidth = 2.5;
-
 color = ametrine(3);
+set(groot,'defaultAxesTickLabelInterpreter','latex');
+set(groot, 'DefaultAxesFontSize', font_size);
+set(groot, 'DefaultAxesLineWidth', 2);
 
-subplot(2,3,[4,5,6])
+subplot(2,1,1)
+hold on
+plt1 = plot(Zm(1,:),Cm{1}(end,:),'LineWidth',5, 'Color',color(1,:));
+plt2 = plot(Zm(1,:),Cm{2}(end,:),'LineWidth',5, 'Color',color(2,:));
+plt3 = plot(Zm(1,:),Cm{3}(end,:),'LineWidth',5, 'Color',color(3,:));
+ylabel('$c|_{R_{m0}}$', 'FontSize', font_size, 'Interpreter','latex')
+xlim([0 1])
+
+subplot(2,1,2)
 hold on
 h1 = plot(Zm(1,:), Pl{1}(1,:) - Pe{1}(1,:), 'LineWidth',5, 'Color',color(1,:), 'DisplayName','$P_{e,out} = 0$');
 h2 = plot(Zm(1,:), Pl{2}(1,:) - Pe{2}(1,:), 'LineWidth',5, 'Color',color(2,:), 'DisplayName','$P_{e,out} = 0.3P_{l,out}$');
 h3 = plot(Zm(1,:), Pl{3}(1,:) - Pe{3}(1,:), 'LineWidth',5, 'Color',color(3,:), 'DisplayName','$P_{e,out} = 0.6P_{l,out}$');
-basicfiguresetup(font_size,1.5)
-fig_xaxis('$z$',font_size)
-fig_yaxis('$P_l - P_e$', font_size)
+leg = legend([h1,h2,h3], 'FontSize', font_size, 'Interpreter', 'latex');
+set(leg, 'Location', 'southwest')
+xlabel('$z$', 'FontSize', font_size, 'Interpreter','latex')
+ylabel('$P_l - P_e$', 'FontSize', font_size, 'Interpreter','latex')
 xlim([0 1])
-figurelegend([h1 h2 h3],'','',16,true,'southwest','',1);
+
+leg = legend('Interpreter', 'latex');
+set(leg, 'Location', 'southwest')

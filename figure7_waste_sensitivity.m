@@ -97,6 +97,9 @@ end
 
 
 figure(1)
+set(groot,'defaultAxesTickLabelInterpreter','latex');
+set(groot, 'DefaultAxesFontSize', font_size);
+set(groot, 'DefaultAxesLineWidth', 2);
 setfiguresize([21 5])
 subplot(1,3,3)
 hold on
@@ -106,10 +109,9 @@ patch([Rm0_array fliplr(Rm0_array)], [wm_min fliplr(wm_max)], color(2,:))
 h1 = plot(Rm0_array, wm_avg, 'LineWidth',4,'Color',color(2,:), 'DisplayName','Homogoeneous Permeability');
 h2 = plot(Rm0_array, wm_optimum,'LineWidth',4,'Color',color(1,:),'DisplayName','Heterogeneous Permeability');
 alpha(0.4)
-fig_xaxis('$R_{m0}$',font_size)
-figurelegend([h1 h2],'','',16,true,'northwest','',1);
+xlabel('$R_{m0}$','FontSize', font_size, 'Interpreter', 'latex')
+legend([h1,h2], 'FontSize', font_size, 'Interpreter', 'latex')
 xlim([1.5 4.5])
-basicfiguresetup(font_size,1.5)
 
 subplot(1,3,1)
 hold on
@@ -119,10 +121,9 @@ patch([Plin_array fliplr(Plin_array)], [wm_plin_min fliplr(wm_plin_max)], color(
 plot(Plin_array, wm_plin_avg, 'LineWidth',4,'Color',color(2,:))
 plot(Plin_array, wm_const_opt,'LineWidth',4,'Color',color(1,:))
 alpha(0.4)
-fig_xaxis('$P_{l,in}$',font_size)
-fig_yaxis('$w|_{R_{m0}}$',font_size)
+xlabel('$P_{l,in}$','FontSize', font_size, 'Interpreter', 'latex')
+ylabel('$w|_{R_{m0}}$','FontSize', font_size, 'Interpreter', 'latex')
 xlim([Plin_array(1) Plin_array(end)])
-basicfiguresetup(font_size,1.5)
 
 subplot(1,3,2)
 hold on
@@ -132,6 +133,5 @@ patch([Pein_array fliplr(Pein_array)], [wm_pein_min fliplr(wm_pein_max)], color(
 plot(Pein_array, wm_pein_avg, 'LineWidth',4,'Color',color(2,:))
 plot(Pein_array, wm_const_opt,'LineWidth',4,'Color',color(1,:))
 alpha(0.4)
-fig_xaxis('$P_{e,in}$',font_size)
+xlabel('$P_{e,in}$','FontSize', font_size, 'Interpreter', 'latex')
 xlim([Pein_array(1) Pein_array(end)])
-basicfiguresetup(font_size,1.5)

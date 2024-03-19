@@ -75,8 +75,10 @@ psie_array = [NaN(1, 2*m) linspace(psi_ecrit, psi_max, m)];
 
 
 %% PLOT
-set(groot,'defaultFigureVisible','on')
 font_size = 22;
+set(groot,'defaultAxesTickLabelInterpreter','latex');
+set(groot, 'DefaultAxesFontSize', font_size);
+set(groot, 'DefaultAxesLineWidth', 2);
 figure('Name','Coordinate Transform')
 subplot(1,2,1)
 hold on
@@ -123,12 +125,8 @@ plot(z_array, repmat(Re0,1,n),'k', 'LineWidth',3)
 xlim([0 1])
 ylim([0 Re0])
 
-fig_xaxis('$z$',font_size)
-fig_yaxis('$r$', font_size)
-
-basicfiguresetup(font_size,1.5)
-testa = gca;
-testa.Box = 'off';
+xlabel('$z$','FontSize', font_size, 'Interpreter','latex')
+ylabel('$r$', 'FontSize',font_size, 'Interpreter','latex')
 
 subplot(1,2,2)
 hold on
@@ -166,8 +164,8 @@ plot(repmat(3,1,m),linspace(psi_lcrit,psi_max+lil,m), 'Color', colors(4,:), 'Lin
 plot(ones(1,m),linspace(psi_lcrit,psi_ecrit,m),'k','LineWidth',3)
 plot(repmat(2,1,m),linspace(psi_lcrit,psi_ecrit,m),'k','LineWidth',3)
 
-fig_xaxis('$s$',font_size)
-fig_yaxis('$\psi$', font_size)
+xlabel('$s$', 'FontSize', font_size, 'Interpreter', 'latex')
+ylabel('$\psi$', 'FontSize', font_size, 'Interpreter', 'latex')
 xlim([0 3])
 ylim([0 psi_max+lil])
 
@@ -175,14 +173,7 @@ h1 = plot(nan, nan, 'LineWidth', 3, 'Color', colors(2,:), 'DisplayName', 'Stream
 h2 = plot(nan, nan, 'LineWidth', 3, 'Color', colors(4,:), 'DisplayName', 'Streamline contours (constant $s$)');
 h3 = plot(nan, nan, 'LineWidth', 3, 'Color', 'k', 'DisplayName', 'Domain boundaries');
 h4 = plot(nan, nan, '--', 'LineWidth', 5, 'Color', 'k', 'DisplayName', 'Critical streamlines ($\psi_{i,crit}$)');
-
-figurelegend([h1, h2, h3, h4],'','',14,true,'southeast','',4);
-
-basicfiguresetup(font_size,1.5)
-testa = gca;
-a = plotboxpos(gca);
-testa.Box = 'off';
-
-setfiguresize([20 10])
+leg = legend([h1,h2,h3,h4], 'FontSize', font_size-10, 'Interpreter', 'latex', 'Orientation', 'horizontal');
+set(leg,'Location','south')
 hold off
 

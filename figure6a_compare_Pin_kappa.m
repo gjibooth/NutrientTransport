@@ -31,6 +31,9 @@ color = ametrine(j);
 [~, ~, Cm_opt] = optimalMembraneConc(Rm0, epsilon, delta, Peclet_l, phi_m, phi_c, Dm, Vmax, Km, n);
 
 figure(1)
+set(groot,'defaultAxesTickLabelInterpreter','latex');
+set(groot, 'DefaultAxesFontSize', font_size);
+set(groot, 'DefaultAxesLineWidth', 2);
 setfiguresize([21 5])
 subplot(1,3,1)
 hold on
@@ -39,9 +42,9 @@ for i = 1:j
     plot(Zm(1,:), Cm(end,:),'LineWidth',4,'Color',color(i,:))
 end
 plot(Zm(1,:),Cm_opt(end,:),'--','LineWidth',4,'Color','k')
-fig_xaxis('$z$',font_size)
-fig_yaxis('$c|_{R_{m0}}$', font_size)
-basicfiguresetup(font_size,1.5, '$\kappa \in (10^{-4}, 10^{-1})$')
+xlabel('$z$', 'FontSize', font_size, 'Interpreter', 'latex')
+ylabel('$c|_{R_{m0}}$', 'FontSize', font_size, 'Interpreter', 'latex')
+title('$\kappa \in (10^{-4}, 10^{-1})$', 'FontSize', font_size, 'Interpreter', 'latex')
 
 subplot(1,3,2)
 hold on
@@ -50,8 +53,8 @@ for i = 1:j
     plot(Zm(1,:), Cm_plout(end,:),'LineWidth',4,'Color',color(i,:))
 end
 plot(Zm(1,:),Cm_opt(end,:),'--','LineWidth',4,'Color','k')
-fig_xaxis('$z$',font_size)
-basicfiguresetup(font_size,1.5,'$P_{l,in} \in (P_{l,in}, 5P_{l,in}) $')
+xlabel('$z$','FontSize', font_size, 'Interpreter', 'latex')
+title('$P_{l,in} \in (P_{l,in}, 5P_{l,in}) $','FontSize', font_size, 'Interpreter', 'latex')
 
 subplot(1,3,3)
 hold on
@@ -61,6 +64,7 @@ for i = 1:j
 end
 h1 = plot(nan,nan, 'LineWidth',4,'Color',color(end,:), 'DisplayName','Homogeneous Permeability');
 h2 = plot(Zm(1,:),Cm_opt(end,:),'--','LineWidth',4,'Color','k', 'DisplayName','Heterogeneous Permeability');
-figurelegend([h1 h2],'','',20,true,'southeast','',1);
-fig_xaxis('$z$',font_size)
-basicfiguresetup(font_size,1.5, '$P_{e,in} \in (0, P_{l,in}) $')
+leg = legend([h1,h2], 'FontSize', font_size, 'Interpreter', 'latex');
+set(leg, 'Location', 'southeast')
+xlabel('$z$','FontSize', font_size, 'Interpreter', 'latex')
+title('$P_{e,in} \in (0, P_{l,in}) $','FontSize', font_size, 'Interpreter', 'latex')
